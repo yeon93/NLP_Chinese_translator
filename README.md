@@ -1,6 +1,3 @@
-# Section6_Project
-
-
 
 ## seq2seq를 활용한 중국어 번역모델 만들기
 
