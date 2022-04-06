@@ -5,7 +5,8 @@
 ## seq2seq를 활용한 중국어 번역모델 만들기
 
 #### 1. 데이터
-[AI HUB 한국어-중국어 번역 말뭉치 데이터](https://aihub.or.kr/aidata/30721, https://aihub.or.kr/aidata/30722)
+  + [AI HUB 한국어-중국어 번역 말뭉치 데이터(사회과학)](https://aihub.or.kr/aidata/30721)
+  + [AI HUB 한국어-중국어 번역 말뭉치 데이터(기술과학)](https://aihub.or.kr/aidata/30722)
 
 #### 2. 모델
 seq2seq
