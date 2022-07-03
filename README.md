@@ -94,4 +94,6 @@ https://aimb.tistory.com/181
 https://github.com/fxsjy/jieba
 https://github.com/YangBin1729/nlp_notes/blob/master/06-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/27-%E5%9F%BA%E4%BA%8EAttention%E7%9A%84%E4%B8%AD%E8%AF%91%E8%8B%B1(TensorFlow).ipynb
 https://www.youtube.com/watch?v=WsQLdu2JMgI
-https://www.tensorflow.org/text/tutorials/nmt_with_attention
+https://www.tensorflow.org/text/tutorials/nmt_with_attention  
+https://github.com/tensorflow/docs-l10n/blob/master/site/ko/guide/gpu.ipynb  
+https://www.tensorflow.org/tutorials/text/nmt_with_attention?hl=ko  
