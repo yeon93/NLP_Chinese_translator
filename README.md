@@ -91,6 +91,8 @@
 
 
 ## 진행사항 
+![1](https://user-images.githubusercontent.com/88722429/177543615-b7404321-854c-4f9c-8991-6bbdaf88a598.PNG)
+![output](https://user-images.githubusercontent.com/88722429/177543621-5fa63555-f382-46a9-9667-4c41eafe9c9b.png)  
 (응...?)
 
 
