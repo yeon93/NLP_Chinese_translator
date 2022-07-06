@@ -41,28 +41,28 @@
 
 
 ## 모델(Seq2Seq + Attention)
-<img src='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHixMi%2FbtqDlkuE4XV%2FrtvT9hKMMMkxjVDnyggqj0%2Fimg.png', width='700' height='500'>  
+<img src='https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHixMi%2FbtqDlkuE4XV%2FrtvT9hKMMMkxjVDnyggqj0%2Fimg.png' width='700' height='500'>  
 
 ### Seq2Seq  
 + RNN(순환신경망, recurrent nearal network) 기반으로, 인코더와 디코더 내부는 RNN으로 구성됨
 + 입력된 시퀀스로부터 다른 도메인의 시퀀스를 출력하는 다양한 분야에서 사용되는 모델  
   => 입력 시퀀스와 출력 시퀀스를 각각 입력 문장과 번역 문장으로 구성하면 번역기를 만들 수 있을 것으로 예상
 
-1. 인코더
-  + 요약) 입력 문장의 모든 단어들을 순차적으로 입력받은 뒤, 마지막에 모든 단어 정보들을 압축해 하나의 벡터(context vector)로 만들어 디코더로 전송
-  + 1. 입력받은 문장을 토큰화를 통해 단어 단위로 쪼갬
-  + 2. 단어 토큰 각각은  임베딩 벡터로 변환 후 RNN 셀의 각 시점의 입력이 됨
-  + 3. 인코더의 RNN 셀은 모든 단어를 입력받은 뒤 인코더 RNN 셀의 마지막 시점의 은닉상태(=context vector)를 디코더 RNN 셀로 넘겨줌
++ 인코더
+  + 입력 문장의 모든 단어들을 순차적으로 입력받은 뒤, 마지막에 모든 단어 정보들을 압축해 하나의 벡터(context vector)로 만들어 디코더로 전송
+  1. 입력받은 문장을 토큰화를 통해 단어 단위로 쪼갬
+  2. 단어 토큰 각각은  임베딩 벡터로 변환 후 RNN 셀의 각 시점의 입력이 됨
+  3. 인코더의 RNN 셀은 모든 단어를 입력받은 뒤 인코더 RNN 셀의 마지막 시점의 은닉상태(=context vector)를 디코더 RNN 셀로 넘겨줌
 
-2. 디코더
-  + 요약) context vector를 입력받아 번역된 단어를 하나씩 순차적으로 출력
-  + 1. 초기 입력으로 문장의 시작을 의미하는 <sos>, 문장의 끝을 의미하는 <eos>가 들어감
-  + 2. 훈련 과정에서 인코더가 보낸 context vector와 실제 정답을 입력받았을 때, 교사 강요(teacher forcing)을 통해 훈련
-    + ex) <sos> I am a student 가 실제 정답일 때, I am a student <eos> 가 나와야 한다고 정답을 알려주면서 훈련
-  + 3. 테스트 과정에서 context vector와 <sos>만을 입력받은 후에 다음에 등장할 확률이 높은 단어를 예측, 그 단어를 다음 시점의 RNN 셀의 입력값으로 사용
-  + 4. 다음 단어로 <eos>가 예측될 때까지 2번을 반복 
++ 디코더
+  + context vector를 입력받아 번역된 단어를 하나씩 순차적으로 출력
+  1. 초기 입력으로 문장의 시작을 의미하는 <sos>, 문장의 끝을 의미하는 <eos>가 들어감
+  2. 훈련 과정에서 인코더가 보낸 context vector와 실제 정답을 입력받았을 때, 교사 강요(teacher forcing)을 통해 훈련
+  + ex) <sos> I am a student 가 실제 정답일 때, I am a student <eos> 가 나와야 한다고 정답을 알려주면서 훈련
+  3. 테스트 과정에서 context vector와 <sos>만을 입력받은 후에 다음에 등장할 확률이 높은 단어를 예측, 그 단어를 다음 시점의 RNN 셀의 입력값으로 사용
+  4. 다음 단어로 <eos>가 예측될 때까지 2번을 반복 
   
-3. 출력
++ 출력
   + 출력 단어가 될 확률이 있는 모든 단어들로부터 하나의 단어를 골라 예측하기 위해 softmax 함수 사용
 
 > RNN 기반 모델의 문제점
@@ -78,14 +78,14 @@
 디코더에서 출력단어를 예측하는 매 시점마다 인코더의 전체 입력문장을 참고하는데,
 전체 입력문장 중 해당 시점에서 예측해야할 단어와 연관있는 단어 부분을 좀더 집중(attention)해서 본다!  
 => seq2seq에서 나아가, 문맥을 더 잘 반영할 수 있는 context vector를 구하여 매 시점마다 하나의 입력으로 사용할 수 있음
-+ 1. 인코더의 각 시점마다 생성되는 hidden state vector를 간직해두었다가 모든 단어가 입력되면 한번에 디코더에 넘겨줌
-+ 2. 각 vector는 디코더의 각 시점에서 query("나랑 비슷한 애 누구야?!")로 작용해 key들을 불러모음
-+ 3. query에 대해서 모든 key와의 유사도를 각각 계산(해당 프로젝트에서는 바다나우(concat) 방법 사용)
-+ 4. 각 유사도 값에 softmax 함수를 취해 총합 1의 확률값을 계산
-+ 5. 각 확률값과 value(key의 값=단어의 의미)를 곱한 결과를 종합해 context vector 생성  
+1. 인코더의 각 시점마다 생성되는 hidden state vector를 간직해두었다가 모든 단어가 입력되면 한번에 디코더에 넘겨줌
+2. 각 vector는 디코더의 각 시점에서 query("나랑 비슷한 애 누구야?!")로 작용해 key들을 불러모음
+3. query에 대해서 모든 key와의 유사도를 각각 계산(해당 프로젝트에서는 바다나우(concat) 방법 사용)
+4. 각 유사도 값에 softmax 함수를 취해 총합 1의 확률값을 계산
+5. 각 확률값과 value(key의 값=단어의 의미)를 곱한 결과를 종합해 context vector 생성  
   + query-key 연관성이 높은 value 벡터 성분이 더 많이 들어가게 되어 문맥을 더 잘 반영하게 됨
-+ 6. context vector와 디코더의 hidden state vector를 사용해 출력단어를 결정 
-+ 7. 디코더는 인코더에서 넘어온 모든 hidden state vector에 대해 2~6의 계산 수행
+6. context vector와 디코더의 hidden state vector를 사용해 출력단어를 결정 
+7. 디코더는 인코더에서 넘어온 모든 hidden state vector에 대해 2~6의 계산 수행
   + 각 시점마다 출력할 단어가 어떤 인코더 시점의 어떤 단어 정보와 연관되어 있는지, 즉 어떤 단어에 attention할지 알 수 있음
 
 
@@ -115,7 +115,7 @@
   + (GPU가 24GB 이상은 필요하다고 한다...)
 2. subword tokenizer 적용하기
   + 현재는 토큰화 과정에서 조사와 단어가 다 붙어있는 상태로, 토큰의 재사용이 힘들고 OOV를 처리할 수 없음
-
+  + tokenizer 수정을 통해 토큰 개수가 줄어들면 모델 학습시간, 용량도 줄어들 것으로 기대
 
 
 ### 참고자료
