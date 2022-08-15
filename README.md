@@ -20,8 +20,8 @@
 
 
 ## 데이터
-+ [AI HUB 한국어-중국어 번역 말뭉치 데이터(사회과학)](https://aihub.or.kr/aidata/30721)
-+ [AI HUB 한국어-중국어 번역 말뭉치 데이터(기술과학)](https://aihub.or.kr/aidata/30722)  
++ [AI HUB 한국어-중국어 번역 말뭉치 데이터(사회과학)](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=129)
++ [AI HUB 한국어-중국어 번역 말뭉치 데이터(기술과학)](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=128)  
   
 + 데이터 구축분야
     + 사회과학 : 금융/증시, 사회/노동/복지, 교육, 문화재/향토/K-FOOD, 조례,  
@@ -33,7 +33,7 @@
     + 사회과학 : 금융/증시(20만), 사회/노동/복지(20만), 교육(10만), 문화재/향토/K-FOOD(15만),  
     조례(20만), 정치/행정(25만), K-POP(한류)/대중문화_공연_콘텐츠(20만)
     + 기술과학 : 의료/보건(25만), 특허/기술(15만), 자동차/교통/소재(30만), IT/컴퓨터/모바일(60만)
-<img src='https://aihub.or.kr/sites/default/files/styles/max_2600x2600/public/2021-05/028.%E1%84%92%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE%E1%86%A8%E1%84%8B%E1%85%A5-%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%AE%E1%86%A8%E1%84%8B%E1%85%A5%20%E1%84%87%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%A8%20%E1%84%86%E1%85%A1%E1%86%AF%E1%84%86%E1%85%AE%E1%86%BC%E1%84%8E%E1%85%B5%28%E1%84%89%E1%85%A1%E1%84%92%E1%85%AC%E1%84%80%E1%85%AA%E1%84%92%E1%85%A1%E1%86%A8%29_%E1%84%83%E1%85%A2%E1%84%91%E1%85%AD%E1%84%83%E1%85%A9%E1%84%86%E1%85%A7%E1%86%AB.png?itok=AQ_3oXxE' width='700' height='200'>
+<img src='https://aihub.or.kr/web-nas/aihub21/files/public/styles/max_325x325/public/2021-05/027.%E1%84%92%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE%E1%86%A8%E1%84%8B%E1%85%A5-%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%80%E1%85%AE%E1%86%A8%E1%84%8B%E1%85%A5%20%E1%84%87%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%A8%20%E1%84%86%E1%85%A1%E1%86%AF%E1%84%86%E1%85%AE%E1%86%BC%E1%84%8E%E1%85%B5%28%E1%84%80%E1%85%B5%E1%84%89%E1%85%AE%E1%86%AF%E1%84%80%E1%85%AA%E1%84%92%E1%85%A1%E1%86%A8%29_%E1%84%83%E1%85%A2%E1%84%91%E1%85%AD%E1%84%83%E1%85%A9%E1%84%86%E1%85%A7%E1%86%AB.png?itok=8pYYjTrs' width='700' height='200'>
 => 위 9가지 정보 중 한국어, 중국어 정보만 추출해 딥러닝에 사용  
 <img src='https://user-images.githubusercontent.com/88722429/177605433-57eb14a4-5d00-4ff0-94f5-173cde991714.PNG'>
 
